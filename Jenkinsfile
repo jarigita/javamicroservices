@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('set JAVA_PATH') {
+    stage('begin') {
       steps {
-        sh 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'
+        echo 'start PRU1'
       }
     }
 
