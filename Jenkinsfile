@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    maven '/home/arigita/WORK/java/idea-IC-201.6668.121/plugins/maven/lib/maven3/bin/mvn' 
+  }
   stages {
     stage('Begin') {
       steps {
