@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Begin') {
+    stage('set JAVA_PATH') {
       steps {
-        echo 'Iniciando projecto AA'
+        sh 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'
       }
     }
 
