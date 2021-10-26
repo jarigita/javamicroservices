@@ -10,12 +10,22 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        sh 'mvn clean package'
+        sh 'mvn clean install surefire-report:report'
       }
     }
 
     stage('End') {
       steps {
+        // publish html
+        publishHTML target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'unit test',
+            reportFiles: 'surefire-report.html',
+            reportName: 'Unit test Report'
+          ]
+
         echo 'End'
       }
     }
