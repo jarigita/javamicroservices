@@ -16,16 +16,7 @@ pipeline {
 
     stage('End') {
       steps {
-        // publish html
-        publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'unit test',
-            reportFiles: 'surefire-report.html',
-            reportName: 'Unit test Report'
-          ]
-
+        publishHTML([            allowMissing: false,            alwaysLinkToLastBuild: false,            keepAll: true,            reportDir: 'target/site',            reportFiles: 'surefire-report.html',            reportName: 'Unit test Report'          ])
         echo 'End'
       }
     }
