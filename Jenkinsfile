@@ -4,6 +4,7 @@ pipeline {
     stage('begin') {
       steps {
         echo 'start PRU1'
+        sh 'echo $JAVA_HOME'
       }
     }
 
