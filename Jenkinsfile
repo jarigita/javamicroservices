@@ -7,9 +7,10 @@ pipeline {
       }
     }
 
-    stage('Build & Test') {
+    stage('Build') {
       steps {
-        echo 'Build & Test'
+        echo 'Build'
+        sh 'mvn clean package'
       }
     }
 
