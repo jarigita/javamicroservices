@@ -10,14 +10,15 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        sh 'mvn clean install surefire-report:report'
+        sh 'mvn -Dmaven.test.failure.ignore clean package'
+        stash(name: 'build-test-artifacts', includes: '**/target/surefire-reports/TEST-*.xml,target/*.jar.')
       }
     }
 
-    stage('End') {
+    stage('report & publish') {
       steps {
-        publishHTML([            allowMissing: false,            alwaysLinkToLastBuild: false,            keepAll: true,            reportDir: 'target/site',            reportFiles: 'surefire-report.html',            reportName: 'Unit test Report'          ])
-        echo 'End'
+        unstash 'build-test-artifacts'
+        junit '**/target/surefire-reports/TEST-*.xml'
       }
     }
 
