@@ -18,7 +18,7 @@ class AdditionControllerTestBad {
         AdditionController controler = new AdditionController();
 
         String result = controler.doAdd("1","1");
-        String sum = "4";
+        String sum = "5";
 
         //THEN
         String expected = "{\"addend1\":\"" + addend1 + "\", \"addend2\":\"" + addend2 + "\", \"sum\": \"" + sum + "\"}";
